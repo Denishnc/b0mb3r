@@ -28,4 +28,4 @@ SMS бомбер с приятным веб-интерфейсом.
 3. Выполните действия с пункта 3 из инструкции по установке на Windows.
 
 # Скриншоты
-![Скриншот](https://github.com/crinny/b0mb3r/blob/master/assets/screenshot.jpg)
+![Скриншот](https://github.com/crinny/b0mb3r/blob/master/assets/screenshot.png)
