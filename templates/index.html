@@ -2,11 +2,12 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/index.css">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link href="/static/index.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.2/css/intlTelInput.css" rel="stylesheet">
     <title>b0mb3r 💣</title>
 </head>
 <body>
@@ -17,25 +18,22 @@
 <div id="main">
     <h1 id="logo">b0mb3r 💣</h1>
     <p class="lead" id="sms">Доступно SMS-сервисов: <span class="badge badge-pill badge-primary">{{sms}}</span></p>
-    <form id="phone" action="/sms" method="post">
+    <form action="/sms" id="phone-form" method="post">
         <div class="form-row">
             <div class="col">
                 <label for="phones"></label>
-                <input type="text" class="form-control" id="phones" name="phones" aria-describedby="phonesHelp"
-                       placeholder="Номер телефона" minlength="11" required>
+                <input aria-describedby="phonesHelp" class="form-control" id="phone" name="phone"
+                       placeholder="Номер телефона" required type="text">
             </div>
 
             <div class="col">
                 <label for="count"></label>
-                <input type="number" class="form-control" id="count" name="count" placeholder="Повторы" value="1"
-                       min="1" max="1000" required>
+                <input class="form-control" id="count" max="1000" min="1" name="count" placeholder="Повторы"
+                       required type="number" value="1">
             </div>
         </div>
-        <small id="phonesHelp" class="form-text text-muted">Введите номер в формате
-            79XXXXXXXXX или несколько
-            номеров через запятую.
-        </small>
-        <button type="submit" class="btn btn-primary btn-lg">Начать атаку</button>
+        <small class="form-text text-muted" id="phonesHelp"></small>
+        <button class="btn btn-primary btn-lg" type="submit">Начать атаку</button>
     </form>
 </div>
 
@@ -43,20 +41,39 @@
     <span class="text-muted">Made with ❤️ by crinny.</span>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+<script crossorigin="anonymous"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.2/js/intlTelInput.min.js"></script>
 
 <script type="text/javascript">
-    $('#phone').submit(function (e) {
+    let tips = ['b0mb3r работает с российскими номерами лучше всего', 'вы можете предложить новый SMS-сервис <a href="https://github.com/crinny/b0mb3r/issues">здесь</a>'];
+    let input = document.querySelector('#phone');
+    let tip = document.querySelector('#phonesHelp');
+    let intltelinput = undefined;
+
+    $(document).ready(function () {
+        tip.innerHTML = 'Совет: ' + tips[Math.random() * tips.length>>0];
+        intltelinput = intlTelInput(input, {
+            onlyCountries: ['ru', 'ua', 'kz', 'by'],
+            initialCountry: 'ru',
+            utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.2/js/utils.js'
+        });
+    });
+
+    $('#phone-form').submit(function (e) {
         e.preventDefault();
         $('#main').css({'filter': 'blur(3px)', '-webkit-filter': 'blur(3px)'});
         $('#footer').css({'filter': 'blur(3px)', '-webkit-filter': 'blur(3px)'});
         $('#block-ui').css('display', 'block');
+
+        let data = $('#phone-form').serializeArray();
+        data.push({name: "country", value: intltelinput.getSelectedCountryData().iso2});
+        console.log(data);
         $.ajax({
             url: '/sms',
             type: 'post',
-            data: $('#phone').serialize(),
+            data: data,
             success: function () {
                 $('#main').css({'filter': 'blur(0px)', '-webkit-filter': 'blur(0px)'});
                 $('#footer').css({'filter': 'blur(0px)', '-webkit-filter': 'blur(0px)'});

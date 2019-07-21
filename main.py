@@ -7,6 +7,8 @@ import webbrowser
 
 from flask import Flask, request, render_template
 
+country_codes = {'ru': '7', 'ua': '380', 'kz': '7', 'by': '375'}
+
 services = os.listdir('services')
 service_classes = {}
 sys.path.insert(0, 'services')
@@ -42,16 +44,13 @@ def index():
 
 @app.route('/sms', methods=['POST'])
 def start():
-    phone = request.form['phones']
+    phone = request.form['phone']
     count = request.form['count']
-    if ',' in phone:
-        phones = phone.replace(' ').split(',')
-    else:
-        phones = [phone]
-    for phone_ in phones:
-        for _ in range(int(count)):
-            for module_, service_class in service_classes.items():
-                getattr(module_, service_class)(phone_).send_sms()
+    country_code = request.form['country']
+    phone_code = country_codes[country_code]
+    for _ in range(int(count)):
+        for module_, service_class in service_classes.items():
+            getattr(module_, service_class, [country_code, phone_code])(phone).send_sms()
     return '(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧'
 
 

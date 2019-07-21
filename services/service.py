@@ -9,8 +9,11 @@ from urllib3.exceptions import InsecureRequestWarning
 class Service:
     user_agent = UserAgent()
 
-    def __init__(self, phone):
+    def __init__(self, phone, country_data):
         self.phone = phone
+        self.country_code = country_data[0]
+        self.phone_code = country_data[1]
+        self.formatted_phone = self.phone_code + self.phone
         self.session = requests.Session()
 
         if os.path.isfile('debug'):

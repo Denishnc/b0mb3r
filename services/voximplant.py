@@ -11,4 +11,4 @@ class VoxImplant(Service):
                           data={'region': 'eu', 'account_name': name, 'language_code': 'en',
                                 'account_email': name + '@gmail.com', 'account_password': name})
         self.session.post('https://api-ru-manage.voximplant.com/api/SendActivationCode',
-                          data={'phone': self.phone, 'account_email': name + '@gmail.com'})
+                          data={'phone': self.formatted_phone, 'account_email': name + '@gmail.com'})
