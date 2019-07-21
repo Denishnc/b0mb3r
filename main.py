@@ -50,7 +50,7 @@ def start():
     phone_code = country_codes[country_code]
     for _ in range(int(count)):
         for module_, service_class in service_classes.items():
-            getattr(module_, service_class, [country_code, phone_code])(phone).send_sms()
+            getattr(module_, service_class)(phone, [country_code, phone_code]).send_sms()
     return '(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧'
 
 
