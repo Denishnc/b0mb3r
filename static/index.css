@@ -33,20 +33,6 @@ html, body {
     z-index: 1080;
 }
 
-@keyframes pulsate {
-    0% {
-        transform: scale(.1);
-        opacity: 0.0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1.2);
-        opacity: 0;
-    }
-}
-
 #block-ui {
     width: 100%;
     height: 100%;
@@ -63,6 +49,35 @@ html, body {
     background: #f5f5f5;
 }
 
+.iti__flag {
+    background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.2/img/flags.png");
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(.1);
+        opacity: 0.0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes blur {
+    from {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+    }
+    to {
+        -webkit-filter: blur(3px);
+        filter: blur(3px);
+    }
+}
+
 @media screen and (min-width: 250px) and  (max-width: 768px) {
     #phone-form {
         margin-right: 6%;
@@ -70,9 +85,8 @@ html, body {
     }
 }
 
-
-.iti__flag {background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.2/img/flags.png");}
-
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .iti__flag {background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.2/img/flags@2x.png");}
+    .iti__flag {
+        background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.2/img/flags@2x.png");
+    }
 }

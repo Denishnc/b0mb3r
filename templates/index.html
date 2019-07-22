@@ -53,7 +53,7 @@
     let intltelinput = undefined;
 
     $(document).ready(function () {
-        tip.innerHTML = 'Совет: ' + tips[Math.random() * tips.length>>0];
+        tip.innerHTML = 'Совет: ' + tips[Math.random() * tips.length >> 0];
         intltelinput = intlTelInput(input, {
             onlyCountries: ['ru', 'ua', 'kz', 'by'],
             initialCountry: 'ru',
@@ -63,20 +63,29 @@
 
     $('#phone-form').submit(function (e) {
         e.preventDefault();
-        $('#main').css({'filter': 'blur(3px)', '-webkit-filter': 'blur(3px)'});
-        $('#footer').css({'filter': 'blur(3px)', '-webkit-filter': 'blur(3px)'});
+        $('#main').css({'animation': 'blur', 'animation-duration': '0.8s', 'animation-fill-mode': 'both'});
+        $('#footer').css({'animation': 'blur', 'animation-duration': '0.8s', 'animation-fill-mode': 'both'});
         $('#block-ui').css('display', 'block');
 
         let data = $('#phone-form').serializeArray();
         data.push({name: "country", value: intltelinput.getSelectedCountryData().iso2});
-        console.log(data);
         $.ajax({
             url: '/sms',
             type: 'post',
             data: data,
             success: function () {
-                $('#main').css({'filter': 'blur(0px)', '-webkit-filter': 'blur(0px)'});
-                $('#footer').css({'filter': 'blur(0px)', '-webkit-filter': 'blur(0px)'});
+                $('#main').css({
+                    'animation': 'blur',
+                    'animation-duration': '0.8s',
+                    'animation-fill-mode': 'both',
+                    'animation-direction': 'reverse'
+                });
+                $('#footer').css({
+                    'animation': 'blur',
+                    'animation-duration': '0.8s',
+                    'animation-fill-mode': 'both',
+                    'animation-direction': 'reverse'
+                });
                 $('#block-ui').css('display', 'none');
             }
         });
