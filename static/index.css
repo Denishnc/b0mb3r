@@ -64,7 +64,7 @@ html, body {
 }
 
 @media screen and (min-width: 250px) and  (max-width: 768px) {
-    #phone {
+    #phone-form {
         margin-right: 6%;
         margin-left: 6%;
     }
