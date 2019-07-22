@@ -4,10 +4,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
     <link href="/static/index.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.2/css/intlTelInput.css" rel="stylesheet">
+    <link href="/static/intlTelInput.min.css" rel="stylesheet">
     <title>b0mb3r 💣</title>
 </head>
 <body>
@@ -41,10 +40,8 @@
     <span class="text-muted">Made with ❤️ by crinny.</span>
 </div>
 
-<script crossorigin="anonymous"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.2/js/intlTelInput.min.js"></script>
+<script src="/static/jquery-3.4.1.min.js"></script>
+<script src="/static/intlTelInput.min.js"></script>
 
 <script type="text/javascript">
     let tips = ['b0mb3r работает с российскими номерами лучше всего', 'вы можете предложить новый SMS-сервис <a href="https://github.com/crinny/b0mb3r/issues/new?labels=enhancement&title=%D0%94%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20SMS-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%B0">здесь</a>'];
@@ -57,7 +54,6 @@
         intltelinput = intlTelInput(input, {
             onlyCountries: ['ru', 'ua', 'kz', 'by'],
             initialCountry: 'ru',
-            utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.2/js/utils.js'
         });
     });
 

@@ -56,5 +56,5 @@ def start():
 
 if not bool(os.environ.get('PORT')):
     print(' * Listening on http://' + get_ip() + ':8080/')
-    webbrowser.open('http://' + get_ip() + ':8080/')
+    webbrowser.open('http://' + get_ip() + ':8080/', new=2, autoraise=True)
     app.run(host='0.0.0.0', port=8080, threaded=True)

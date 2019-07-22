@@ -50,7 +50,7 @@ html, body {
 }
 
 .iti__flag {
-    background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.2/img/flags.png");
+    background-image: url("flags.png");
 }
 
 @keyframes pulsate {
@@ -87,6 +87,6 @@ html, body {
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .iti__flag {
-        background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.2/img/flags@2x.png");
+        background-image: url("flags@2x.png");
     }
 }
