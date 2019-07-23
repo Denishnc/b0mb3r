@@ -54,6 +54,3 @@ class Service:
     @staticmethod
     def generate_random_user_agent():
         return Service.user_agent.random
-
-    def send_sms(self):
-        raise NotImplementedError

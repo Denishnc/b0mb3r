@@ -3,9 +3,10 @@ import logging
 import os
 import socket
 import sys
+import threading
 import webbrowser
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, abort
 
 country_codes = {'ru': '7', 'ua': '380', 'kz': '7', 'by': '375'}
 
@@ -37,6 +38,14 @@ def get_ip():
     return ip
 
 
+def run_service(service_class, module_, phone, country_code, phone_code, type_):
+    if type_ == 'call':
+        getattr(module_, service_class)(phone, [country_code, phone_code]).send_call()
+    else:
+        getattr(module_, service_class)(phone, [country_code, phone_code]).send_sms()
+    sys.exit()
+
+
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html', sms=len(service_classes))
@@ -44,14 +53,27 @@ def index():
 
 @app.route('/sms', methods=['POST'])
 def start():
-    phone = request.form['phone']
-    count = request.form['count']
-    country_code = request.form['country']
-    phone_code = country_codes[country_code]
-    for _ in range(int(count)):
-        for module_, service_class in service_classes.items():
-            getattr(module_, service_class)(phone, [country_code, phone_code]).send_sms()
-    return '(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧'
+    try:
+        phone = request.form['phone']
+        count = request.form['count']
+        country_code = request.form['country']
+        phone_code = country_codes[country_code]
+        send_calls = request.form['call']
+        send_calls_bool = True if send_calls == 'true' else False
+
+        for _ in range(int(count)):
+            for module_, service_class in service_classes.items():
+                try:
+                    _ = getattr(module_, service_class).send_call
+                    if send_calls_bool:
+                        threading.Thread(target=run_service,
+                                         args=(service_class, module_, phone, country_code, phone_code, 'call')).start()
+                except AttributeError:
+                    threading.Thread(target=run_service,
+                                     args=(service_class, module_, phone, country_code, phone_code, 'sms')).start()
+        return '(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧'
+    except (ValueError, KeyError):
+        abort(400)
 
 
 if not bool(os.environ.get('PORT')):
