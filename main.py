@@ -38,11 +38,11 @@ def get_ip():
     return ip
 
 
-def run_service(service_class, module_, phone, country_code, phone_code, type_):
+def run_service(service_class, module_, phone, country_code, phone_code, sms_text, type_):
     if type_ == 'call':
-        getattr(module_, service_class)(phone, [country_code, phone_code]).send_call()
+        getattr(module_, service_class)(phone, [country_code, phone_code], sms_text).send_call()
     else:
-        getattr(module_, service_class)(phone, [country_code, phone_code]).send_sms()
+        getattr(module_, service_class)(phone, [country_code, phone_code], sms_text).send_sms()
     sys.exit()
 
 
@@ -59,6 +59,7 @@ def start():
         country_code = request.form['country']
         phone_code = country_codes[country_code]
         send_calls = request.form['call']
+        sms_text = request.form['smsText']
         send_calls_bool = True if send_calls == 'true' else False
 
         for _ in range(int(count)):
@@ -67,10 +68,12 @@ def start():
                     _ = getattr(module_, service_class).send_call
                     if send_calls_bool:
                         threading.Thread(target=run_service,
-                                         args=(service_class, module_, phone, country_code, phone_code, 'call')).start()
+                                         args=(service_class, module_, phone, country_code, phone_code, sms_text,
+                                               'call')).start()
                 except AttributeError:
                     threading.Thread(target=run_service,
-                                     args=(service_class, module_, phone, country_code, phone_code, 'sms')).start()
+                                     args=(service_class, module_, phone, country_code, phone_code, sms_text,
+                                           'sms')).start()
         return '(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧'
     except (ValueError, KeyError):
         abort(400)
