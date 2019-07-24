@@ -41,5 +41,6 @@ SMS бомбер с приятным веб-интерфейсом.
    ```
 2. Выполните действия, начиная с пункта 3 из инструкции по установке на Windows.
 # Скриншоты
-![Скриншот](https://github.com/crinny/b0mb3r/blob/master/assets/screenshot.png)
-![Скриншот](https://github.com/crinny/b0mb3r/blob/master/assets/screenshot_mobile.png)
+⁣                           |  ⁣
+:-------------------------:|:-------------------------:
+![](https://github.com/crinny/b0mb3r/blob/master/assets/screenshot.png)  |  ![](https://github.com/crinny/b0mb3r/blob/master/assets/screenshot_mobile.png)
