@@ -1,4 +1,3 @@
 requests
 flask
 fake_useragent
-gunicorn
