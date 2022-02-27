@@ -1,0 +1,142 @@
+{
+  "projectName": "b0mb3r",
+  "projectOwner": "crinny",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "crinny",
+      "name": "Nikita",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/42045258?v=4",
+      "profile": "https://t.me/crinny",
+      "contributions": [
+        "question",
+        "bug",
+        "code",
+        "design",
+        "doc",
+        "fundingFinding",
+        "ideas",
+        "infra",
+        "maintenance",
+        "platform",
+        "projectManagement",
+        "review"
+      ]
+    },
+    {
+      "login": "ifamed",
+      "name": "Dmitry",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/9146326?v=4",
+      "profile": "https://github.com/ifamed",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "its5Q",
+      "name": "its5Q",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/12975646?v=4",
+      "profile": "https://github.com/its5Q",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "nm17",
+      "name": "Р”Р°РЅРёРёР» РќРёРєРѕР»Р°РµРІ",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/23419131?v=4",
+      "profile": "https://github.com/nm17",
+      "contributions": [
+        "code",
+        "doc",
+        "financial",
+        "ideas",
+        "tool",
+        "review"
+      ]
+    },
+    {
+      "login": "catofsof",
+      "name": "Kirill Link",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/58178903?v=4",
+      "profile": "https://github.com/catofsof",
+      "contributions": [
+        "code",
+        "design"
+      ]
+    },
+    {
+      "login": "cxiodev",
+      "name": "cxiodev",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/39461931?v=4",
+      "profile": "https://github.com/cxiodev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mishailovic",
+      "name": "Mikhail Kuznetsov",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/41520056?v=4",
+      "profile": "https://github.com/mishailovic",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "asinedd",
+      "name": "asinedd",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/67601784?v=4",
+      "profile": "https://github.com/asinedd",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "aiexz",
+      "name": "aiexz",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42418433?v=4",
+      "profile": "https://github.com/aiexz",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "GameTrue",
+      "name": "GameTrue",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/45202887?v=4",
+      "profile": "https://github.com/GameTrue",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "AntsiferovBogdan",
+      "name": "Antsiferov Bogdan",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/58101453?v=4",
+      "profile": "https://github.com/AntsiferovBogdan",
+      "contributions": [
+        "code",
+        "design"
+      ]
+    },
+    {
+      "login": "y9san9",
+      "name": "Alex Sokol",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/46930374?v=4",
+      "profile": "https://vipapp.site/",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
